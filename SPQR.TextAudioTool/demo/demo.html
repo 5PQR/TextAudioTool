@@ -1,0 +1,262 @@
+<!doctype html>
+<html data-test-id="brave-new-tab-page" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>SPQR TextAudioTool Demo</title>
+		<script src="files/jquery-3.6.0.min.js"></script>
+		<script src="files/main.js"></script>
+	</head>
+	<body>
+		<div id="main" style="width:100%;box-sizing:border-box; padding:0px 20px">
+			<h1>SPQR Text Audio Tool</h1>
+			<h2>Tool that creates local endpoints to get available TTS voices, generate audio using a TTS voice and convert speech to text using Whisper</h2>
+		
+			<table style="width:100%;text-align:left;box-sizing:border-box;">
+				<tr style="background:#787878">
+					<th>Endpoint</th>
+					<th>Type</th>
+					<th>Example response</th>
+					<th>Test response</th>
+				</tr>
+				<tr>
+					
+					<td class="api-description">
+					<div class="api-endpoint">http://127.0.0.1:7069/status</div>
+					Checks if the tool is running.</td>
+					<td class="api-method">GET</td>
+					<td class="api-example"><pre>{"status": "running"}</pre></td>
+					<td class="api-run">
+						<a class="btn test-api" style="margin:10px 0px;display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;" data-endpoint="status">Test response</a><br/>
+						<div class="response" style="display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;">
+							<b>Response:</b>
+							<pre class="api-response"></pre>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					
+					<td class="api-description">
+					<div class="api-endpoint">http://127.0.0.1:7069/voices</div>
+					Gets the list of available local TTS voices.</td>
+					<td class="api-method">GET</td>
+					<td class="api-example"><pre>{
+"TTS_MS_EN-US_DAVID_11.0": "Microsoft David Desktop - English (United States)",
+"IVONA 2 Voice Emma22": "IVONA 2 Emma - British English female voice [22kHz]",
+"Amy RSI Harpo 22kHz": "IVONA 2 Amy OEM",
+"TTS_MS_EN-US_ZIRA_11.0": "Microsoft Zira Desktop - English (United States)"
+}</pre></td>
+					<td class="api-run">
+						<a class="btn test-api" style="margin:10px 0px;display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;" data-endpoint="status">Test response</a><br/>
+						<div class="response" style="display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;">
+							<b>Response:</b>
+							<pre class="api-response"></pre>
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					
+					<td class="api-description">
+					<div class="api-endpoint">http://127.0.0.1:7069/read</div>
+					Opens a local audio file (files/tts_read.wav) and converts it to text.</td>
+					<td class="api-method">GET</td>
+					<td class="api-example"><pre>{
+"status": "ok",
+"text": "brand new brand new brand new brand new brand new bread to know for the new brand new brand new bread nero",
+"error": ""
+}</pre></td>
+					<td class="api-run">
+						<a class="btn test-api" style="margin:10px 0px;display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;" data-endpoint="status">Test response</a><br/>
+						<div class="response" style="display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;">
+							<b>Response:</b>
+							<pre class="api-response"></pre>
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					
+					<td class="api-description">
+					<div class="api-endpoint">http://127.0.0.1:7069/listen-whisper</div>
+					Listens to the microphone and tries to convert speech to text. Works best with 1s of pause at the beginning to adjust for room noise. It keeps the max limit to 15s, and it times-out after 5s of silence/no voice. It uses Whisper (tiny) to detect English vocabulary.</td>
+					<td class="api-method">GET</td>
+					<td class="api-example"><pre>{
+"status": "ok",
+"text": " 1 2 3",
+"error": ""
+}</pre></td>
+					<td class="api-run">
+						<a class="btn test-api" style="margin:10px 0px;display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;" data-endpoint="status">Test response</a><br/>
+						<div class="response" style="display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;">
+							<b>Response:</b>
+							<pre class="api-response"></pre>
+						</div>
+					</td>
+				</tr>
+				
+				<tr>					
+					<td class="api-description">
+					<div class="api-endpoint">http://127.0.0.1:7069/speak</div>Receives text, a voice id and a file path and it tries to generate an audio file to that path.
+					<div class="api-data" style="margin-top:20px;">
+					<b>POST data:</b><br />
+					<textarea style="width:250px;min-height:100px;">{
+"message": "This is a test.",
+"voice": "Microsoft David Desktop - English (United States)",
+"output": "files/tts_output.wav"
+}</textarea></div>
+					
+					</td>
+					<td class="api-method api-method-post">POST</td>	
+					<td class="api-example"><pre>{
+"status": "done",
+"saved": "files/tts_output.wav",
+}</pre></td>
+					<td class="api-run">
+						<a class="btn test-api" style="margin:10px 0px;display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;" data-endpoint="status">Test response</a><br/>
+						<div class="response" style="display:inline-block;vertical-align:top;width:100%;box-sizing:border-box;">
+							<b>Response:</b>
+							<pre class="api-response"></pre>
+						</div>
+					</td>
+				</tr>
+				
+				
+				
+			</table>
+			
+		</div>
+		<footer>
+				Help me make more tools, mods & cool stuff at <a href="https://patreon.com/spqr_aeternum">patreon.com/SPQR_AETERNUM</a>
+			</footer>
+		<style>
+			.btn{
+				padding:7px 10px;
+				background:#9c23bb;
+				color:#fff;
+				text-align:center;
+				cursor:pointer;
+			}
+			.btn:hover{
+				filter:brightness(1.3);
+			}
+			table {
+			  border-collapse: collapse;
+			  background: #fff;
+			  box-shadow: 2px 2px 6px #0003;
+			}
+			table tr{
+				
+			}
+			.api-description{
+				width:25%;
+				}
+			.api-response{
+				background:#999;border:2px solid #666;padding:10px; width:100%;box-sizing:border-box;
+				white-space: break-spaces;
+				max-width: 300px;
+			}
+			.api-response.fail{
+				background: #e5b4b4;
+				border: 2px solid #9b5353;
+			}
+			.api-response.success{
+				background: #b4e5b4;
+				border: 2px solid #539b53;
+			}
+			.api-run b{
+				display:block;
+			}
+			td.api-example pre {
+				white-space: break-spaces;
+				max-width: 400px;
+			}
+			span.pretty-accolade-open,span.pretty-accolade-close {
+				font-weight: bold;
+				font-size: 20px;
+				color: #03f;
+			}
+
+			span.pretty-comma {
+				font-size: 20px;
+				color: #c3c;
+				font-size: 20px;
+				display: inline-block;
+			}
+			.api-endpoint {
+				font-weight: bold;
+				font-size: 16px;
+				margin-bottom:10px;
+			}
+			td {
+				border: 1px solid #7e7e7e66;
+				text-align: left;
+				padding: 5px;
+			}
+			td.api-method {
+				font-size: 12px;
+				text-align: center;
+			}
+			td.api-method {
+				font-size: 12px;
+				text-align: center;
+				background: #79ab79;
+				color: #fff;
+				font-weight: bold;
+			}
+			td.api-method.api-method-post{
+			background: #7979ab;
+			}
+
+			body {
+				background: #4a4a4a;
+				font-family: sans-serif;
+				padding:0px;
+				margin:0px;
+			}
+
+			h1 {
+				text-transform: uppercase;
+				color: #fff;
+				font-size:60px;
+				font-family: fantasy;
+				font-weight: normal;
+				text-align: center;
+				margin-bottom:10px;
+			}
+
+			h2 {
+				font-size: 14px;
+				color: #fffc;
+				text-align: center;
+				width: 90%;
+				max-width: 500px;
+				margin: 0px auto 40px;
+			}
+			tr th {
+				border: 1px solid #666;
+				padding: 10px;
+				color: #fff;
+				font-weight: 600;
+			}
+			footer {
+				width: 100%;
+				background: #222;
+				margin-top: 30px;
+				padding: 20px;
+				box-sizing: border-box;
+				text-align: center;
+				color: #ababab;
+			}
+
+			footer a {
+				color: #fff;
+				text-decoration: none;
+			}
+
+			footer a:hover {text-decoration: underline;}
+
+		</style>
+	</body>
+</html>
