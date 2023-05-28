@@ -2,7 +2,7 @@
 Very quick & simple python tool that creates local api endpoints for TTS &amp; STT. It was created for a Virt-A-Mate mod but it can be used for other games & applications too.
 It installs miniconda and the required dependencies, then starts a local server running at 127.0.0.1:7069 which has endpoints for local TTS (old school SAPI voices) and STT (using Whisper - tiny version).
 
-![Clipboard02](https://github.com/5PQR/TextAudioTool/assets/122448634/fcc6b8d0-be64-4393-95a6-8908eae4de02)
+![img](https://github.com/5PQR/TextAudioTool/assets/122448634/7aeb85c7-0b09-4cb6-a177-172911639139)
 
 
 # Install for VaM
