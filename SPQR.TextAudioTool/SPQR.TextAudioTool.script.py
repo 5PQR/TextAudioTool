@@ -1,3 +1,4 @@
+import config
 import http.server
 import socketserver
 import json
@@ -43,7 +44,6 @@ print("=========================================================================
 
 RECORD_FILE_PATH = "files/tts_read.wav"
 SCRIPT_OK = True
-DEBUG = False
 
 class SPQRTTSHandler(http.server.BaseHTTPRequestHandler):
     def end_headers(self): 
@@ -71,6 +71,7 @@ class SPQRTTSHandler(http.server.BaseHTTPRequestHandler):
 
             # Set the voice to use (optional)
             engine.setProperty('voice', selected_voice)
+            engine.setProperty('rate',config.TTS_LOCAL_SPEECH_RATE)
             #Save text
             output_path = "spqr_tts_latest.wav";
             if data['output'] != "":
@@ -136,8 +137,8 @@ class SPQRTTSHandler(http.server.BaseHTTPRequestHandler):
                 r = sr.Recognizer()
                 with sr.Microphone() as source:                # use the default microphone as the audio source
                     audio = r.adjust_for_ambient_noise(source) # listen for 1 second to calibrate the energy threshold for ambient noise levels
-                    audio = r.listen(source, timeout=4, phrase_time_limit=15)  # now when we listen, the energy threshold is already set to a good value
-                read_text_whisper = r.recognize_whisper(audio_data=audio, model="tiny", language="english")
+                    audio = r.listen(source, timeout=4, phrase_time_limit=config.STT_TIME_LIMIT)  # now when we listen, the energy threshold is already set to a good value
+                read_text_whisper = r.recognize_whisper(audio_data=audio, model=config.STT_MODEL, language=config.STT_LANGUAGE)
                 read_text = read_text_whisper
                 read_text_status = "ok"
             except Exception as e:
@@ -203,7 +204,7 @@ def check_and_install_package(package_name):
         print(f"    {package_name} is already installed.")
     except ImportError:
         print(f"    {package_name} Checking...")
-        if DEBUG:
+        if config.DEBUG:
             subprocess.call(['pip', 'install', package_name])
         else:
             subprocess.call(['pip', 'install', package_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -242,7 +243,7 @@ if SCRIPT_OK:
     warnings.filterwarnings("ignore", message=".*The 'nopython' keyword.*")
     import whisper
     print("    Checking for Whisper model...")
-    model = whisper.load_model("tiny")
+    model = whisper.load_model(config.STT_MODEL)
 
     httpd = socketserver.TCPServer(('127.0.0.1', 7069), SPQRTTSHandler)
     print("==============================================================================")
