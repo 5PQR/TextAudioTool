@@ -30,6 +30,8 @@ If everything went OK, the command prompt should show READY and the tool's endpo
 ## 4.Run
 After installing it's best to close it and opening the tool again. You can test the endpoints in a browser by opening demo/demo.html. Hitting "Test response" buttons should generate responses similar to the example ones if everything is working properly.
 
+# Config
+You can edit SPQR.TextAudioTool\config.py in any text editor and change there a few settings like the WPM rate for the offline voice and the language and model type used for detecting speech to text. More info about each setting can be found in the file.
 
 # Usage for VaM
 When the tool is running, it should be possible from VaM to do TTS & STT by accessing the endpoints.
