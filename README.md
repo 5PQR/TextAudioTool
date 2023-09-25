@@ -43,5 +43,8 @@ The tool can be opened/closed at any time. I added the extra bat files like "SPQ
 # Usage for other applications
 Same as above but only the **SPQR.TextAudioTool** folder is necessary, the extra .bat files can be removed, or you can keep just the bat with (standalone) in the name. To run it you can open SPQR.TextAudioTool.bat directly, or the (standalone) bat which is a shortcut to the one inside the folder, meant to be easier to find.
 
+# License
+Feel free to use the rest of my code in any way you want for any purposes, but if you use the SPQR.TextAudioTool.bat you have to follow the AGPL license because that script was based on an agpl licensed script. For commercial purposes you're better off just making that logic from scratch, it's just a download file & install, chatgpt can help. I was confused by the license and got stuck with it.
+
 # Credits
-* The installer script is based on oobabooga's install script made for https://github.com/oobabooga/one-click-installers
+* The installer script ( SPQR.TextAudioTool.bat) that downloads and installs miniconda is based on oobabooga's install script made for https://github.com/oobabooga/one-click-installers , I only changed the python script it loads
