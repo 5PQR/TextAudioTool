@@ -4,6 +4,14 @@ It installs miniconda and the required dependencies, then starts a local server 
 
 ![img](https://github.com/5PQR/TextAudioTool/assets/122448634/7aeb85c7-0b09-4cb6-a177-172911639139)
 
+# Important!!!
+To make sure the script runs properly you might want to have it in a path that has only simple letters and numbers.
+* ✅ C:\SomeFolder\Vam\
+* ❌ C:\SomeFolder\Virt-a-mate\
+* ❌ C:\SomeFolder\Virt a mate\
+* ❌ C:\Some Folder\Vam\
+* ❌ C:\SomeFolder(1)\Vam\
+* ❌ C:\あるフォルダ\Vam\
 
 # Install for VaM
 ## 1. Install ffmpeg
