@@ -1,0 +1,5 @@
+# Hubert Model
+https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/hubert_base.pt
+
+# RVMPE (rmvpe pitch extraction, Optional)
+https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/rmvpe.pt
