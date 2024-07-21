@@ -42,7 +42,7 @@ After installing it's best to close it and opening the tool again. You can test 
 You can edit SPQR.TextAudioTool\config.py in any text editor and change there a few settings like the WPM rate for the offline voice and the language and model type used for detecting speech to text. More info about each setting can be found in the file.
 
 # Update
-To update from v0.1 to v0.2 you can delete the old SPQR.TextAudioTool folder and replace it with the one from the latest zip. Or more quickly to skip the script installing everything again, you can just replace SPQR.TextAudioTool.script.py & config.py and everything else can stay the same.
+To update, you can delete the "SPQR.TextAudioTool" folder and replace it with the new one from the latest zip. Before you delete the folder, you can copy somewhere the file "SPQR.TextAudioTool/config.py" and readd it to the new folder in case you added custom config settings in that file.
 
 # Usage for VaM
 When the tool is running, it should be possible from VaM to do TTS & STT by accessing the endpoints.
